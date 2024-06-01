@@ -3,7 +3,7 @@ import time
 if __name__ == "__main__":
     while True:
         try:
-            option = int(input("Select a pipeline run option:\n1. Type (1) Run Pipeline on all the datasets\n2. Type (2) Run the pipeline on validation datasets only\n"))
+            option = int(input("Select a pipeline run option:\n1. Type (1) Run Pipeline on all the datasets\n2. Type (2) Run the pipeline on validation datasets only\n>>>"))
             if option in [1, 2]:
                 print(f"You selected option {option}.")
                 break
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     elif option==2:
         raw_data_path = "Data/validation"
         temp_path="Data/temp"
-        
+
     replace_missing_values(raw_data_path,temp_path)
     sqlite_db_path='database/pragma.db'
     table_name='prices'

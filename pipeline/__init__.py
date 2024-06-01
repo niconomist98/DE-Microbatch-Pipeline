@@ -19,7 +19,11 @@ def remove_temp_files(directory):
     
 def replace_missing_values(input_folder, output_folder):
     files = [f for f in os.listdir(input_folder) if f.endswith('.csv')]
-    files = sorted(files, key=lambda x: int(x.split('-')[1].split('.')[0]))
+    if(len(files)>1):
+        files = sorted(files, key=lambda x: int(x.split('-')[1].split('.')[0]))
+    else:
+            files = [f for f in os.listdir(input_folder) if f.endswith('.csv')]
+
     for file in files:
         in_file_path = os.path.join(input_folder, file)
         out_file_path=os.path.join(output_folder, file)
@@ -28,6 +32,7 @@ def replace_missing_values(input_folder, output_folder):
         print(out_file_path)
 
         print(dataset_name)
+        print(f"Preprocessing dataset {dataset_name}: Handling null values, replace for 0 ")
         with open(in_file_path, 'r') as infile, open(out_file_path, 'w', newline='') as outfile:
             reader = csv.reader(infile)
             writer = csv.writer(outfile)
@@ -45,6 +50,7 @@ def close_sqlite(conn):
     conn.close()
 
 def execute(statement,sqlite_db_path):
+    print("Executing SQL script on sqlite3 table")
     conn = sqlite3.connect(sqlite_db_path)
     cursor = conn.cursor()
     query = statement
@@ -61,8 +67,12 @@ def execute(statement,sqlite_db_path):
 def insert_csv_line_sqlite(directory_path,sqlite_db_path,table_name):
     conn = sqlite3.connect(sqlite_db_path)
     cursor = conn.cursor()
+    
     files = [f for f in os.listdir(directory_path) if f.endswith('.csv')]
-    files = sorted(files, key=lambda x: int(x.split('-')[1].split('.')[0]))
+    if(len(files)>1):
+        files = sorted(files, key=lambda x: int(x.split('-')[1].split('.')[0]))
+    else:
+        files = [f for f in os.listdir(directory_path) if f.endswith('.csv')]
     log_row_count=0
     logs_prices=[]
     for file in files:
