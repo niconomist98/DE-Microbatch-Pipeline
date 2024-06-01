@@ -4,7 +4,6 @@ import time
 import csv
 import os
 import time 
-import pandas as pd
 import shutil
 
 def remove_temp_files(directory):
@@ -81,6 +80,6 @@ def insert_csv_line_sqlite(directory_path,sqlite_db_path,table_name):
                 logs_prices.append(int(row[1]))  
                 print(f"--------------------- row {log_row_count} start---------------------\nStats:\nInserted rows count :  {log_row_count}\nAverage of Price: {sum(logs_prices) /len(logs_prices)}\nMinimun Price: {min(logs_prices)}\nMax Price : {max(logs_prices)}\n--------------------- row {log_row_count} end---------------------\n>>>")
                 cursor.execute(query, row)
-                time.sleep(0.)
+                time.sleep(0.1)
         conn.commit()
     conn.close()
