@@ -19,6 +19,7 @@ def remove_temp_files(directory):
     
 def replace_missing_values(input_folder, output_folder):
     files = [f for f in os.listdir(input_folder) if f.endswith('.csv')]
+    files = sorted(files, key=lambda x: int(x.split('-')[1].split('.')[0]))
     for file in files:
         in_file_path = os.path.join(input_folder, file)
         out_file_path=os.path.join(output_folder, file)
@@ -61,6 +62,7 @@ def insert_csv_line_sqlite(directory_path,sqlite_db_path,table_name):
     conn = sqlite3.connect(sqlite_db_path)
     cursor = conn.cursor()
     files = [f for f in os.listdir(directory_path) if f.endswith('.csv')]
+    files = sorted(files, key=lambda x: int(x.split('-')[1].split('.')[0]))
     log_row_count=0
     logs_prices=[]
     for file in files:
@@ -80,6 +82,6 @@ def insert_csv_line_sqlite(directory_path,sqlite_db_path,table_name):
                 logs_prices.append(int(row[1]))  
                 print(f"--------------------- row {log_row_count} start---------------------\nStats:\nInserted rows count :  {log_row_count}\nAverage of Price: {sum(logs_prices) /len(logs_prices)}\nMinimun Price: {min(logs_prices)}\nMax Price : {max(logs_prices)}\n--------------------- row {log_row_count} end---------------------\n>>>")
                 cursor.execute(query, row)
-                time.sleep(0.1)
+                time.sleep(0.3)
         conn.commit()
     conn.close()
