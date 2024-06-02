@@ -7,6 +7,9 @@ import time
 import shutil
 
 def remove_temp_files(directory):
+     """Elimina archivos temporales necesarios para usar como 
+    staging layer antes del procesamiento e ingesta de los datos """
+    
     for filename in os.listdir(directory):
         file_path = os.path.join(directory, filename)
         try:
@@ -18,6 +21,10 @@ def remove_temp_files(directory):
             print('Failed to delete %s. Reason: %s' % (file_path, e))
     
 def replace_missing_values(input_folder, output_folder):
+    
+    """Funcion de preprocesamiento para reemplazar los valores 
+    nulos del dataset por 0 antes de la ingesta"""
+    
     files = [f for f in os.listdir(input_folder) if f.endswith('.csv')]
     if(len(files)>1):
         files = sorted(files, key=lambda x: int(x.split('-')[1].split('.')[0]))
@@ -42,14 +49,23 @@ def replace_missing_values(input_folder, output_folder):
                 writer.writerow(row)
 
 def connect_sqlite(path):
+
+    """Abre conexion con la base de datos Sqlite3"""
+    
     conn = sqlite3.connect(path)
     cursor = conn.cursor()
     return conn
     
 def close_sqlite(conn):
+    
+    """Cierrra  conexion con la base de datos"""
+    
     conn.close()
 
 def execute(statement,sqlite_db_path,table_name):
+
+    """Ejecuta sentencias sql sobre la base de datos"""
+    
     conn = sqlite3.connect(sqlite_db_path)
     cursor = conn.cursor()
     query = statement
@@ -64,6 +80,12 @@ def execute(statement,sqlite_db_path,table_name):
    
 
 def insert_csv_line_sqlite(directory_path,sqlite_db_path,table_name):
+
+    """Inserta una a una las lineas del archivo csv en la tabla definida por el parametro table_name, 
+        y emplea una lista y una variable log en memoria para trackear los datos que han sido insertados 
+        y realizar los calculos requeridos (conteo, maximo, minimo, promedio) sobre la variable precio 
+        usando para el calculo la informacion de los logs para no tener que consultar la informacion ingestada a la tabla"""
+    
     conn = sqlite3.connect(sqlite_db_path)
     cursor = conn.cursor()
     
@@ -96,6 +118,12 @@ def insert_csv_line_sqlite(directory_path,sqlite_db_path,table_name):
     conn.close()
 
 def pipeline_run(data_path,temp_path,sqlite_db_path,table_name):
+
+    """Ejecutar todos los pasos del pipeline para preprocesar datos, ingestar en 
+    la base de datos, calcular estadisticas en tiempo
+    real conforme se ejecuta la ingesta y realizar las consultas sobre la base de datos final, mostrando
+    en pantalla los resultados en pantalla"""
+    
     drop_table=f"""drop table if exists {table_name}"""
     create_table = f"""
     CREATE TABLE IF NOT EXISTS {table_name} (
