@@ -74,6 +74,12 @@ Run the pipeline with the docker container
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/452e69ee-ee5e-489b-86d4-e999d884570d)
+![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/9546159b-4999-48a3-b1cb-83aabca8ec1f)
+![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/cb0a0d35-be63-44a0-8eb5-e526c35292cd)
+![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/27625b2d-dcc1-4e5a-b645-14b8f86cd406)
+![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/a4772fff-2471-442e-9a0b-0315f6591c12)
+![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/f4438c95-c351-4cd3-b049-5d61c767a926)
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
