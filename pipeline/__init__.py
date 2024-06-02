@@ -1,3 +1,5 @@
+##Importando las librerias necesarias
+
 import sqlite3
 import os
 import time 
@@ -7,6 +9,7 @@ import time
 import shutil
 
 def remove_temp_files(directory):
+     
      """Elimina archivos temporales necesarios para usar como 
     staging layer antes del procesamiento e ingesta de los datos """
     
