@@ -74,12 +74,25 @@ Run the pipeline with the docker container
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/452e69ee-ee5e-489b-86d4-e999d884570d)
-![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/9546159b-4999-48a3-b1cb-83aabca8ec1f)
-![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/cb0a0d35-be63-44a0-8eb5-e526c35292cd)
-![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/27625b2d-dcc1-4e5a-b645-14b8f86cd406)
-![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/a4772fff-2471-442e-9a0b-0315f6591c12)
-![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/f4438c95-c351-4cd3-b049-5d61c767a926)
+
+* Run the docker image and the pipeline will start its workflow, the pipeline contains a preprocessing step to handle missing values in raw data before ingestion
+
+  ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/cb0a0d35-be63-44a0-8eb5-e526c35292cd)
+  ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/452e69ee-ee5e-489b-86d4-e999d884570d)
+
+* Once preprocessing is completed, the pipeline starts ingestion, inserting line by line and updating the stats of average price, min, max and row counts without querying the final sqlite3 table, updating these calculations in near real time
+   ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/9546159b-4999-48a3-b1cb-83aabca8ec1f)
+
+* Once mini batch ingestion is completed, the pipeline run queries against the sqlite3 prices table (final table after ingestion) to verify the stats report of avg min, max, count of price column
+  
+    ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/27625b2d-dcc1-4e5a-b645-14b8f86cd406)
+
+* Once the general datasets pipeline is completed, the process starts once again, runing the pipeline for validation dataset, preprocessing data to handle null values, inserting one by one in database updating the stats in real time and querying the final table to validate the results
+  
+   ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/a4772fff-2471-442e-9a0b-0315f6591c12)
+
+
+    ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/f4438c95-c351-4cd3-b049-5d61c767a926)
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
