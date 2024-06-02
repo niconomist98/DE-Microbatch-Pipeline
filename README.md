@@ -1,6 +1,5 @@
 ## DE-Microbatch-Pipeline
-Custom pipeline for microbatch data ingestion into sqlite3 database applying file-by-file ingestion with near real time stats tracking 
-Download the docker image here:
+Custom pipeline for microbatch data ingestion into sqlite3 database applying file-by-file, line-by-line  ingestion with near real time stats tracking and updating
 
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
