@@ -125,4 +125,4 @@ def pipeline_run(data_path,temp_path,sqlite_db_path,table_name):
     print(f"Min Price in {table_name}")
     execute(select_min_price,sqlite_db_path,table_name)  
     print(f"Final Query {table_name}")
-    execute(select_min_price,sqlite_db_path,table_name)
+    execute(select_final_price,sqlite_db_path,table_name)
