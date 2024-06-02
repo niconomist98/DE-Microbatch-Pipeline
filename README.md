@@ -13,7 +13,9 @@ Custom pipeline for microbatch data ingestion into sqlite3 database applying fil
 Please check the folder "Files" , there you'll find the initial testing notebooks
 ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/d72ebe4e-7faf-4f24-b0ca-a6b642ed5edc)
 
-Modularized code 
+Modularized code can be found in "pipeline" folder and main.py file 
+![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/2838ed39-d1cb-4c42-a5d8-5b477d93afed)
+
 
 
 <!-- PROJECT SHIELDS -->
