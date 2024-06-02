@@ -50,7 +50,6 @@ def close_sqlite(conn):
     conn.close()
 
 def execute(statement,sqlite_db_path,table_name):
-    print(f"Executing SQL script on {table_name} table")
     conn = sqlite3.connect(sqlite_db_path)
     cursor = conn.cursor()
     query = statement
