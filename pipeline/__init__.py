@@ -10,8 +10,8 @@ import shutil
 
 def remove_temp_files(directory):
      
-     """Elimina archivos temporales necesarios para usar como 
-    staging layer antes del procesamiento e ingesta de los datos """
+    """Elimina archivos temporales necesarios para usar como 
+    staging layer antes del procesamiento e ingesta de los datos"""
     
     for filename in os.listdir(directory):
         file_path = os.path.join(directory, filename)
