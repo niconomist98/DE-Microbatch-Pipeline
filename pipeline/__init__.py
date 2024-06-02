@@ -49,8 +49,8 @@ def connect_sqlite(path):
 def close_sqlite(conn):
     conn.close()
 
-def execute(statement,sqlite_db_path):
-    print("Executing SQL script on sqlite3 table")
+def execute(statement,sqlite_db_path,table_name):
+    print(f"Executing SQL script on {table_name} table")
     conn = sqlite3.connect(sqlite_db_path)
     cursor = conn.cursor()
     query = statement
@@ -92,6 +92,38 @@ def insert_csv_line_sqlite(directory_path,sqlite_db_path,table_name):
                 logs_prices.append(int(row[1]))  
                 print(f"--------------------- row {log_row_count} start---------------------\nStats:\nInserted rows count :  {log_row_count}\nAverage of Price: {sum(logs_prices) /len(logs_prices)}\nMinimun Price: {min(logs_prices)}\nMax Price : {max(logs_prices)}\n--------------------- row {log_row_count} end---------------------\n>>>")
                 cursor.execute(query, row)
-                time.sleep(0.3)
+                time.sleep(0.02)
         conn.commit()
     conn.close()
+
+def pipeline_run(data_path,temp_path,sqlite_db_path,table_name):
+    drop_table=f"""drop table if exists {table_name}"""
+    create_table = f"""
+    CREATE TABLE IF NOT EXISTS {table_name} (
+        timestamp DATE,
+        price double precision,
+        user_id INTEGER
+    );
+    """
+    select_table=f"""select count(1) from {table_name}"""
+    select_price_avg=f"""select avg(price) from {table_name}"""
+    select_max_price_=f"""select max(price) from {table_name}"""
+    select_min_price=f"""select min(price) from {table_name}"""
+    select_final_price=f"""select * from {table_name}"""
+    replace_missing_values(data_path,temp_path)
+    execute(drop_table,sqlite_db_path,table_name)
+    execute(create_table,sqlite_db_path,table_name)
+    insert_csv_line_sqlite(temp_path,sqlite_db_path,table_name)
+    time.sleep(0.5)
+    remove_temp_files(temp_path)
+    print ("Pipeline completed, summarize  results")
+    print(f"Row count in {table_name} : ")
+    execute(select_table ,sqlite_db_path,table_name)
+    print(f"Price Average in {table_name} : ")
+    execute(select_price_avg,sqlite_db_path,table_name)
+    print(f"Max Price in {table_name} " )
+    execute(select_max_price_,sqlite_db_path,table_name)
+    print(f"Min Price in {table_name}")
+    execute(select_min_price,sqlite_db_path,table_name)  
+    print(f"Final Query {table_name}")
+    execute(select_min_price,sqlite_db_path,table_name)
