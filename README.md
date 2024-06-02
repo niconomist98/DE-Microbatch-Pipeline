@@ -70,9 +70,11 @@ Run the pipeline with the docker container
 * Run the docker image and the pipeline will start its workflow, the pipeline contains a preprocessing step to handle missing values in raw data before ingestion
 
   ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/cb0a0d35-be63-44a0-8eb5-e526c35292cd)
+  
   ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/452e69ee-ee5e-489b-86d4-e999d884570d)
 
 * Once preprocessing is completed, the pipeline starts ingestion, inserting line by line and updating the stats of average price, min, max and row counts without querying the final sqlite3 table, updating these calculations in near real time
+* 
    ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/9546159b-4999-48a3-b1cb-83aabca8ec1f)
 
 * Once mini batch ingestion is completed, the pipeline run queries against the sqlite3 prices table (final table after ingestion) to verify the stats report of avg min, max, count of price column
