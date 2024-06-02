@@ -1,4 +1,4 @@
-## DE-Microbatch-Pipeline
+## DE-Microbatch-Pipeline with docker
 Custom pipeline for microbatch data ingestion into sqlite3 database applying file-by-file, line-by-line  ingestion with near real time stats tracking and updating
 
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
