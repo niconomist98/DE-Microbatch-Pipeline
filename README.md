@@ -35,9 +35,10 @@ Download the docker image here:
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://miro.medium.com/v2/resize:fit:594/1*MLFxdoY6ImiTghX9l0lDTA.png" alt="Logo" width="250" height="250">
+    <img src="https://ojt.com/wp-content/uploads/2021/08/python-programming-language.png" alt="Logo" width="250" height="250">
+    <img src="https://pythondiario.com/wp-content/uploads/2013/12/sqlite.png" alt="Logo" width="250" height="250">
   </a>
-
   <h3 align="center">Best-README-Template</h3>
 
   <p align="center">
