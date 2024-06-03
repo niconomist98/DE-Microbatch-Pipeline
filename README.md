@@ -61,7 +61,7 @@ To get a local copy up and running follow these simple example steps.
 ### Installation
 Pull the docker image 
   ```sh
-  docker pull niconomist98/pragma-microbatch-pipeline
+  docker pull niconomist98/pragma-microbatch-pipeline-v2:latest
   ```
 Run the pipeline with the docker container
   ```sh
