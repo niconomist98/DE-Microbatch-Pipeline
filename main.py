@@ -3,7 +3,7 @@ import time
 if __name__ == "__main__":
 
     ##---------------Run pipeline with all the datasets------------------------
-    print("Running pipeline on all the datasets")
+    print("Running pipeline on all the datasets\n")
     time.sleep(3)
     raw_data_path = "Data/raw"
     temp_path="Data/temp"
@@ -13,7 +13,7 @@ if __name__ == "__main__":
     time.sleep(1)
     print("##########################################")
     ###-------------------Run pipeline on validation dataset-----------------------
-    print("Running pipeline on validation  dataset")
+    print("Running pipeline on validation  dataset\n")
     time.sleep(3)
     validation_path = "Data/validation"
     validation_table_name='prices_validation'
