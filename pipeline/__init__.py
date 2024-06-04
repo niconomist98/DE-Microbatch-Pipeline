@@ -40,12 +40,12 @@ def replace_missing_values(input_folder, output_folder):
         in_file_path = os.path.join(input_folder, file)
         out_file_path=os.path.join(output_folder, file)
         dataset_name = os.path.splitext(file)[0]
-        sys.stdout.write(in_file_path)
+        sys.stdout.write(f"{in_file_path}\n")
         sys.stdout.flush()
-        sys.stdout.write(out_file_path)
+        sys.stdout.write(f"{out_file_path}\n")
         sys.stdout.flush()
 
-        sys.stdout.write(dataset_name)
+        sys.stdout.write(f"{dataset_name}\n")
         sys.stdout.flush()
 
         sys.stdout.write(f"Preprocessing dataset {dataset_name}: Handling null values, replace for 0\n")
@@ -111,10 +111,10 @@ def insert_csv_line_sqlite(directory_path,sqlite_db_path,table_name):
         file_path = os.path.join(directory_path, file)
         dataset_name = os.path.splitext(file)[0]
         
-        sys.stdout.write(file_path)
+        sys.stdout.write(f"{file_path}\n")
         sys.stdout.flush()
 
-        sys.stdout.write(dataset_name)
+        sys.stdout.write(f"{dataset_name}\n")
         sys.stdout.flush()
         
         
@@ -126,7 +126,7 @@ def insert_csv_line_sqlite(directory_path,sqlite_db_path,table_name):
                 query = f'INSERT INTO {table_name} (timestamp, price, user_id) VALUES (?, ?, ?)'
                 log_row_count+=1
                 logs_prices.append(int(row[1]))  
-                sys.stdout.write(dataset_name)
+                sys.stdout.write(f"{dataset_name}\n")
                 sys.stdout.flush()
                 sys.stdout.write(f"--------------------- row {log_row_count} start---------------------\nStats:\nInserted rows count :  {log_row_count}\nAverage of Price: {sum(logs_prices) /len(logs_prices)}\nMinimun Price: {min(logs_prices)}\nMax Price : {max(logs_prices)}\n--------------------- row {log_row_count} end---------------------\n>>>")
                 sys.stdout.flush()
