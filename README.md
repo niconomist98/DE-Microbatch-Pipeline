@@ -74,7 +74,9 @@ Run the pipeline with the docker container
 
 * Run the docker image and the pipeline will start its workflow, the pipeline contains a preprocessing step to handle missing values in raw data before ingestion
 
-  ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/cb0a0d35-be63-44a0-8eb5-e526c35292cd)
+ ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/ed460e35-dc64-40a7-8164-3d350f80e3ae)
+
+
   
   ![image](https://github.com/niconomist98/DE-Microbatch-Pipeline/assets/105328047/452e69ee-ee5e-489b-86d4-e999d884570d)
 
