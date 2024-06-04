@@ -65,7 +65,7 @@ Pull the docker image
   ```
 Run the pipeline with the docker container
   ```sh
-  docker run niconomist98/pragma-microbatch-pipeline
+  docker run niconomist98/pragma-microbatch-pipeline-v2
   ```
 
 
